@@ -27,5 +27,7 @@
    ds start
    ds shell
    ds help
+
+   ds jekyll
    ds inject run-tests.sh
    ```

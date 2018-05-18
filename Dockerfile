@@ -16,3 +16,6 @@ RUN apt -y install gnupg2 pinentry-tty haveged libgfshare-bin parcimonie \
 ### install ronn to make the man pages
 RUN apt -y install ruby-dev gcc && \
     gem install ronn
+
+### install jekyll for testing gh-pages locally
+RUN apt -y install jekyll
