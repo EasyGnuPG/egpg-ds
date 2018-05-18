@@ -1,10 +1,11 @@
-FROM ubuntu:18.04
+FROM debian:buster
 
 ### install systemd
-RUN apt update && \
-    apt -y upgrade && \
-    apt -y install systemd && \
-    systemctl set-default multi-user.target
+RUN apt update && apt -y upgrade
+RUN echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
+RUN apt -y install systemd resolvconf
+RUN systemctl set-default multi-user.target
+RUN ln -s /lib/systemd/systemd /sbin/init
 
 CMD ["/sbin/init"]
 WORKDIR /host/egpg

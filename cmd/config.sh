@@ -7,7 +7,7 @@ _EOF
 }
 
 cmd_config() {
-    ds inject set_prompt.sh
+    ds inject debian-fixes.sh
     [[ -d egpg ]] \
         || git clone --branch=gnupg-2.2 https://github.com/easygnupg/egpg
 }
