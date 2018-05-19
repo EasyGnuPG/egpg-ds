@@ -19,3 +19,6 @@ RUN apt -y install ruby-dev gcc && \
 
 ### install jekyll for testing gh-pages locally
 RUN apt -y install jekyll
+
+### install man to test man pages locally inside container
+RUN apt -y install less man
