@@ -8,7 +8,9 @@ _EOF
 
 rename_function cmd_create orig_cmd_create
 cmd_create() {
+    Xephyr :$XDISPLAY -screen 800x600 -resizeable -retro -extension MIT-SHM -extension XTEST &
+    sleep 2
     orig_cmd_create \
-        "$@"    # accept additional options, e.g.: -p 2201:22
-
+        --env DISPLAY=:$XDISPLAY \
+        --mount type=bind,src=/tmp/.X11-unix/X$XDISPLAY,dst=/tmp/.X11-unix/X$XDISPLAY
 }

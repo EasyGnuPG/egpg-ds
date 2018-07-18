@@ -6,16 +6,16 @@
 
   - Then get the scripts from github:
     ```
-    git clone --branch bionic \
+    git clone --branch bionic-gui \
         https://github.com/easygnupg/egpg-ds \
-        /opt/docker-scripts/egpg-bionic
+        /opt/docker-scripts/egpg-bionic-gui
     ```
 
-  - Create a directory for the container: `ds init egpg-bionic @egpg-bionic`
+  - Create a directory for the container: `ds init egpg-bionic-gui @egpg-bionic-gui`
 
-  - Fix the settings: `cd /var/ds/egpg-bionic/ ; vim settings.sh`
+  - Fix the settings: `cd /var/ds/egpg-bionic-gui/ ; vim settings.sh`
 
-  - Get the proper branch of *egpg*: `git clone --branch gnupg-2.2 https://github.com/easygnupg/egpg`
+  - Get the proper branch of *egpg*: `git clone --branch gnupg-2.2-gui https://github.com/easygnupg/egpg`
 
   - Create the container: `ds make`
 
