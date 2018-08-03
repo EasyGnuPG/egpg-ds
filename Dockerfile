@@ -1,16 +1,7 @@
-FROM ubuntu:18.04
-
-### install systemd
-RUN apt update && \
-    apt upgrade -y && \
-    apt install -y systemd && \
-    systemctl set-default multi-user.target
-
-CMD ["/sbin/init"]
-WORKDIR /host/egpg
+include(bionic)
 
 ### install dependencies
-RUN apt install -y gnupg2 pinentry-tty haveged libgfshare-bin parcimonie \
+RUN apt install --yes gnupg2 pinentry-tty haveged libgfshare-bin parcimonie \
         qrencode imagemagick zbar-tools wget coreutils psmisc make sudo
 
 ### disable the option `-w 1024` of haveged daemon
@@ -19,17 +10,17 @@ RUN apt install -y gnupg2 pinentry-tty haveged libgfshare-bin parcimonie \
 RUN sed -i /etc/default/haveged -e '/^DAEMON_ARGS/ s/^/#/'
 
 ### install ronn to make the man pages
-RUN apt install -y ruby-dev gcc && \
+RUN apt install --yes ruby-dev gcc && \
     gem install ronn
 
 ### install jekyll for testing gh-pages locally
-RUN apt install -y jekyll
+RUN apt install --yes jekyll
 
 ### install man to test man pages locally inside container
-RUN apt install -y less man
+RUN apt install --yes less man
 
 ### install yad for gui interfaces
-RUN apt install -y yad
+RUN apt install --yes yad
 
 # ### install pgpg dependencies
 # RUN apt install -y python3-gpg
